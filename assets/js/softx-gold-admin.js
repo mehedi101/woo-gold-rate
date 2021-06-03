@@ -31,6 +31,6 @@ $("#_weight").on("blur", function() {
     }
 })
 
-console.log("loaded from gold price admin menu");
+//console.log("loaded from gold price admin menu");
 
 })(jQuery);
