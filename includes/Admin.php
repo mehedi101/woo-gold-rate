@@ -15,6 +15,7 @@ class Admin {
         $this->dispatch_actions( $goldPriceList );
 
         new Admin\Menu( $goldPriceList );
+        new Product\Softx_Product_Meta_Box(); 
     }
     
     /**

@@ -52,7 +52,7 @@
             'meta_query' =>[
                 'relation' => 'AND',
                 [
-                    'key' => '_assign_carat_name',
+                    'key' => 'softx_assign_carat_name',
                     'value' => $carat_name,
                     'compare' => '='
                 ]
@@ -135,7 +135,15 @@ function change_and_save_product_price(  $carat_price, $productID  ) {
     
     // Save to database (Note: You might want to clear cache of your page and then reload, if it still doesn't show up go to the product page and check there.)
     $product->save();
+    //softx_assign_carat_price
 
+    update_post_meta(
+        $productID,
+        'softx_assign_carat_price',
+        $carat_price
+    );
+
+    return;
 
 }
 
@@ -219,71 +227,11 @@ function gp_delete_price( $id ) {
  * 
  */
 /*=== Author meta box for company  ===*/
-abstract class Carat_Meta_Box {	
-    // Set up and add the meta box.
-    public static function add() {
-        $screens = [ 'product', 'authormeta_cpt' ];
-        foreach ( $screens as $screen ) {
-            add_meta_box(
-                'author_metabox_id',          // Unique ID
-                'Assign to the Caret name & price', // Box title
-                [ self::class, 'html' ],   // Content callback, must be of type callable
-                $screen                  // Post type
-            );
-        }
-    }
-    // Display the meta box HTML to the user.     
-    public static function html( $post ) {
-        $value = get_post_meta( $post->ID, 'softx_assign_carat_name', true ); 
-        $name_price = get_post_meta( $post->ID, 'softx_assign_carat_price', true );         
-        global $wpdb;  
-        $companymetausers = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}gold_price " );
-        //print_r ($companymetausers);
-        
-        ?>
-        
-        <label for="caratname_field"><?php _e( "Choose your Caret Name", "softx-gold-price" ); ?></label>
-        <select name="caratname_field" id="caratname_field" class="postbox">
-
-            <option value=""> <?php _e("Select Your Caret Name", "softx-gold-price")?> </option> 
-            <?php foreach ( $companymetausers as $user ) { 
-            
-                ?>                
-             
-                <option <?php selected($name_price, $user->price); ?>  value="<?php echo $user->price; ?>" > <?php echo '<span>' . esc_html( $user->name ) . '</span>'; ?> </option>          
-   
-              <?php  } ?>
-              
-        </select>
-        <input type="hidden" name="assign_carat_name"  id="assign_carat_name" value=""/>
-        
-        
-        <?php
-    }
-    // Save the meta box selections.     
-    public static function softx_meta_save( int $post_id ) {
-        if ( array_key_exists( 'caratname_field', $_POST ) ) {
-            update_post_meta(
-                $post_id,
-                'softx_assign_carat_price',
-                trim($_POST['caratname_field'])
-            );
-        }
-
-        if ( array_key_exists( 'assign_carat_name', $_POST ) ) {
-            update_post_meta(
-                $post_id,
-                'softx_assign_carat_name',
-                trim($_POST['assign_carat_name']) 
-            );
-        }
-
-        
-    }
+/* abstract class Carat_Meta_Box {
     
 } 
 add_action( 'add_meta_boxes', [ 'Carat_Meta_Box', 'add' ] );
-add_action( 'save_post', [ 'Carat_Meta_Box', 'softx_meta_save' ] );
+add_action( 'save_post', [ 'Carat_Meta_Box', 'softx_meta_save' ] ); */
 
   /**
      * Enqueue scripts and styles

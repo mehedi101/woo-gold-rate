@@ -17,5 +17,6 @@ return array(
     'Softx\\Gold\\Frontend' => $baseDir . '/includes/Frontend.php',
     'Softx\\Gold\\Frontend\\Shortcode' => $baseDir . '/includes/Frontend/Shortcode.php',
     'Softx\\Gold\\Installer' => $baseDir . '/includes/Installer.php',
+    'Softx\\Gold\\Product\\Softx_Product_Meta_Box' => $baseDir . '/includes/Product/Softx_Product_Meta_Box.php',
     'Softx\\Gold\\Traits\\Form_Error' => $baseDir . '/includes/Traits/Form_Error.php',
 );

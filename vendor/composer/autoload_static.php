@@ -36,6 +36,7 @@ class ComposerStaticInit90d1ce0b31bbfb7b073c95d65a81573d
         'Softx\\Gold\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
         'Softx\\Gold\\Frontend\\Shortcode' => __DIR__ . '/../..' . '/includes/Frontend/Shortcode.php',
         'Softx\\Gold\\Installer' => __DIR__ . '/../..' . '/includes/Installer.php',
+        'Softx\\Gold\\Product\\Softx_Product_Meta_Box' => __DIR__ . '/../..' . '/includes/Product/Softx_Product_Meta_Box.php',
         'Softx\\Gold\\Traits\\Form_Error' => __DIR__ . '/../..' . '/includes/Traits/Form_Error.php',
     );
 
