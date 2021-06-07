@@ -234,18 +234,18 @@ abstract class Carat_Meta_Box {
     }
     // Display the meta box HTML to the user.     
     public static function html( $post ) {
-        $value = get_post_meta( $post->ID, '_assign_carat_name', true ); 
-        $name_price = get_post_meta( $post->ID, '_assign_carat_price', true );         
+        $value = get_post_meta( $post->ID, 'softx_assign_carat_name', true ); 
+        $name_price = get_post_meta( $post->ID, 'softx_assign_carat_price', true );         
         global $wpdb;  
         $companymetausers = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}gold_price " );
         //print_r ($companymetausers);
         
         ?>
         
-        <label for="caratname_field">Choose your Caret Name</label>
+        <label for="caratname_field"><?php _e( "Choose your Caret Name", "softx-gold-price" ); ?></label>
         <select name="caratname_field" id="caratname_field" class="postbox">
 
-            <option value=""> Select Your Caret Name </option> 
+            <option value=""> <?php _e("Select Your Caret Name", "softx-gold-price")?> </option> 
             <?php foreach ( $companymetausers as $user ) { 
             
                 ?>                
@@ -261,11 +261,11 @@ abstract class Carat_Meta_Box {
         <?php
     }
     // Save the meta box selections.     
-    public static function save( int $post_id ) {
+    public static function softx_meta_save( int $post_id ) {
         if ( array_key_exists( 'caratname_field', $_POST ) ) {
             update_post_meta(
                 $post_id,
-                '_assign_carat_price',
+                'softx_assign_carat_price',
                 trim($_POST['caratname_field'])
             );
         }
@@ -273,7 +273,7 @@ abstract class Carat_Meta_Box {
         if ( array_key_exists( 'assign_carat_name', $_POST ) ) {
             update_post_meta(
                 $post_id,
-                '_assign_carat_name',
+                'softx_assign_carat_name',
                 trim($_POST['assign_carat_name']) 
             );
         }
@@ -283,6 +283,37 @@ abstract class Carat_Meta_Box {
     
 } 
 add_action( 'add_meta_boxes', [ 'Carat_Meta_Box', 'add' ] );
-add_action( 'save_post', [ 'Carat_Meta_Box', 'save' ] );
+add_action( 'save_post', [ 'Carat_Meta_Box', 'softx_meta_save' ] );
+
+  /**
+     * Enqueue scripts and styles
+     * for woocommerce product edit screen only
+     * @return void
+     */
+
+add_action( 'admin_footer', 'softx_enqueue_assets' );
+
+function softx_enqueue_assets() {
+    wp_enqueue_style( 'price-admin-style' );
+    $screen       = get_current_screen();
+	$screen_id    = $screen ? $screen->id : '';
+    if ( in_array( $screen_id, wc_get_screen_ids() ) ) {
+    wp_enqueue_script( 'softx-gold-admin-script' );
+    }
+    
+}
 
 
+function softx_defer_scripts( $tag, $handle, $src ) {
+    $defer = array( 
+      'softx-gold-admin-script'
+    );
+  
+    if ( in_array( $handle, $defer ) ) {
+       return '<script id="'.$handle.'"  src="' . $src . '" defer ></script>' . "\n";
+    }
+      
+      return $tag;
+  } 
+  
+  add_filter( 'script_loader_tag', 'softx_defer_scripts', 10, 3 );

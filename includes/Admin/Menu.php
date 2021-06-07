@@ -30,7 +30,8 @@ class Menu {
         add_submenu_page( $parent_slug, __( 'Settings', 'gold-price' ), __( 'Settings', 'gold-price' ), $capability, 'gold-price-settings', [ $this, 'settings_page' ] );
         
       //  add_action( 'admin_head-' . $hook, [ $this, 'enqueue_assets' ] );
-        add_action( 'admin_head', [ $this, 'enqueue_assets' ] );
+     
+     //   add_action( 'admin_footer', [ $this, 'enqueue_assets' ] );
     }
 
     /**
@@ -55,14 +56,5 @@ class Menu {
         echo 'Settings Page';
     }
 
-      /**
-     * Enqueue scripts and styles
-     *
-     * @return void
-     */
-    public function enqueue_assets() {
-        wp_enqueue_style( 'price-admin-style' );
-        wp_enqueue_script( 'softx-gold-admin-script' );
-        
-    }
+
 }
