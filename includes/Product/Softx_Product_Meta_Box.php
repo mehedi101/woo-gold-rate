@@ -5,7 +5,7 @@ class Softx_Product_Meta_Box{
 
     public function __construct( )
     {
-        add_action( 'add_meta_boxes', [ $this, 'add' ] );
+        add_action( 'add_meta_boxes_product', [ $this, 'add' ], 10, 2 );
         add_action( 'save_post', [ $this, 'softx_meta_save' ] );
     }
 	
@@ -15,7 +15,7 @@ class Softx_Product_Meta_Box{
         foreach ( $screens as $screen ) {
             add_meta_box(
                 'author_metabox_id',          // Unique ID
-                'Assign to the Caret name & price', // Box title
+                __('Assign Caret name & price for the product', 'softx-gold-price'), 
                 [ $this, 'html' ],   // Content callback, must be of type callable
                 $screen                  // Post type
             );

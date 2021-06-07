@@ -81,7 +81,7 @@
         } else {
             new Softx\Gold\Frontend();
         }
-        new Softx\Gold\API();
+        new Softx\Gold\APi\Gold_Price_Api();
     }
 
     /**
