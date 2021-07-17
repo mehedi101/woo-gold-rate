@@ -14,3 +14,4 @@ to a product and calculate price depending on rate and weight ( rate * weight).
 2. Add product weight from shipping tab and Assign carat while create or edit product. then save or update product.
 3. When need to update the rate, just go to carat and rate list from admin dashboard. Edit -> update Rate. This will update all the product price which assigned 
 that carat. 
+4. after clonning the plugin to the wordpress plugin folder, go to the root of the plugin folder and rund this command from the terminal. <code> composer dump-autoload -o</code>
