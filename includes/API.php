@@ -19,7 +19,7 @@ class API {
      * @return void
      */
     public function register_api() {
-        $goldPriceApi = new APi\Gold_Price_Api();
+        $goldPriceApi = new APi\GoldPriceApi();
         $goldPriceApi->register_routes();
     }
 }

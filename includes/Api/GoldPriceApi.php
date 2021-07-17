@@ -7,7 +7,7 @@ use WP_REST_Server;
 /**
  * Goldpricebook Class
  */
-class Gold_Price_Api extends WP_REST_Controller {
+class GoldPriceApi extends WP_REST_Controller {
  /**
      * Initialize the class
      */

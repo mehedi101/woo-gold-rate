@@ -31,7 +31,7 @@ class ComposerStaticInit90d1ce0b31bbfb7b073c95d65a81573d
         'Softx\\Gold\\Admin\\Goldpricebook' => __DIR__ . '/../..' . '/includes/Admin/Goldpricebook.php',
         'Softx\\Gold\\Admin\\Menu' => __DIR__ . '/../..' . '/includes/Admin/Menu.php',
         'Softx\\Gold\\Admin\\Price_List' => __DIR__ . '/../..' . '/includes/Admin/Price_List.php',
-        'Softx\\Gold\\Api\\Gold_Price_Api' => __DIR__ . '/../..' . '/includes/Api/Gold_Price_Api.php',
+        'Softx\\Gold\\Api\\GoldPriceApi' => __DIR__ . '/../..' . '/includes/Api/GoldPriceApi.php',
         'Softx\\Gold\\Assets' => __DIR__ . '/../..' . '/includes/Assets.php',
         'Softx\\Gold\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
         'Softx\\Gold\\Frontend\\Shortcode' => __DIR__ . '/../..' . '/includes/Frontend/Shortcode.php',

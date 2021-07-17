@@ -12,7 +12,7 @@ return array(
     'Softx\\Gold\\Admin\\Goldpricebook' => $baseDir . '/includes/Admin/Goldpricebook.php',
     'Softx\\Gold\\Admin\\Menu' => $baseDir . '/includes/Admin/Menu.php',
     'Softx\\Gold\\Admin\\Price_List' => $baseDir . '/includes/Admin/Price_List.php',
-    'Softx\\Gold\\Api\\Gold_Price_Api' => $baseDir . '/includes/Api/Gold_Price_Api.php',
+    'Softx\\Gold\\Api\\GoldPriceApi' => $baseDir . '/includes/Api/GoldPriceApi.php',
     'Softx\\Gold\\Assets' => $baseDir . '/includes/Assets.php',
     'Softx\\Gold\\Frontend' => $baseDir . '/includes/Frontend.php',
     'Softx\\Gold\\Frontend\\Shortcode' => $baseDir . '/includes/Frontend/Shortcode.php',
